@@ -1,0 +1,67 @@
+body {
+  font-family: "Microsoft Yahei";
+  width: 400px;
+  min-height: 100px;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 1rem;
+  color: #666;
+  transition: .3s ease-out;
+}
+
+a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #666;
+}
+
+a:link {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+}
+
+.link {
+  background-color: #fff;
+  line-height: 1.5rem;
+  cursor: pointer;
+  box-shadow: 1px 1px 0px 0px rgba(94, 93, 102, 0.08),
+    2px 2px 3px 0px rgba(94, 93, 102, 0.1);
+  margin: 0.4rem 0;
+  border-radius: 3px;
+  padding: 0.1rem 0.3rem;
+  transition: 0.3s all;
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+}
+.link {
+}
+.link:hover {
+  box-shadow: 0 14px 20px 0 rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.link a {
+  text-decoration: none;
+}
+.link-href {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.favIcon {
+  display: inline-block;
+  width: 1rem;
+  min-width: 1rem;
+  height: 1rem;
+  margin-right: 0.4rem;
+  background-size: 1rem 1rem;
+}
