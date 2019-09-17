@@ -3,6 +3,7 @@ const webpack = require('webpack');
 
 const commonConf = require('./webpack.config.common'); //webpack通用配置
 
+const CopyWebpackPlugin = require("copy-webpack-plugin"); // 拷贝文件
 const merge = require("webpack-merge"); // webpack配置合并 可简单的理解为与Object.assign()功能类似
 
 module.exports = merge(commonConf, {
@@ -42,5 +43,9 @@ module.exports = merge(commonConf, {
     plugins: [
         new webpack.HotModuleReplacementPlugin(), // 开启HMR(热替换功能,替换更新部分,不重载页面！)
         new webpack.NamedModulesPlugin(), // 显示模块相对路径
+        new CopyWebpackPlugin([{ // 拷贝文件
+            from: 'public',
+            to: ''
+        }]),
     ]
 })
