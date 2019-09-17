@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
 import dayjs from 'dayjs'
-import { Button } from '@material-ui/core'
-import { Save } from '@material-ui/icons'
+import { Button, Paper } from '@material-ui/core'
+import { Save as SaveIcon, Delete as DeleteIcon } from '@material-ui/icons'
 import { getTabs, setTabs, getCurrentTabs, createTab } from './utils/storage'
 import './App.css'
+import 'animate.css'
 
-const renderLinkItem = element => {
+const renderImmutableLinkItem = element => {
   return (
-    <div className="link" key={element.url} onClick={() => createTab(element)}>
+    <Paper className="link" key={element.url}>
       <span className="favIcon" style={{ backgroundImage: `url(${element.favIconUrl})` }}></span>
-      <a className="link-href" href={element.url}>{element.title}</a>
-    </div>)
+      <span className="link-href" href={element.url}>{element.title}</span>
+    </Paper>
+  )
 }
 
 class App extends Component {
@@ -21,6 +23,15 @@ class App extends Component {
       currentTabs: [],
       savedTabs: [],
     }
+  }
+  renderLinkItem = element => {
+    return (
+      <Paper className="link" key={element.url}>
+        <span className="favIcon" style={{ backgroundImage: `url(${element.favIconUrl})` }}></span>
+        <a className="link-href" href={element.url} onClick={() => createTab(element)}>{element.title}</a>
+        <DeleteIcon className="link-delete wobble fast infinite animated" onClick={() => this.removeTab(element.url)}></DeleteIcon>
+      </Paper>
+    )
   }
   componentDidMount() {
     getTabs()
@@ -51,6 +62,16 @@ class App extends Component {
         })
       })
   }
+  removeTab = (url) => {
+    const { savedTabs } = this.state
+    const newSavedTabs = savedTabs.map((tabs) => tabs.filter((tab) => tab.url != url))
+    setTabs(newSavedTabs)
+      .then(() => {
+        this.setState({
+          savedTabs: newSavedTabs
+        })
+      })
+  }
   render() {
     const { currentTabs, savedTabs } = this.state
     return (
@@ -58,26 +79,27 @@ class App extends Component {
         <h1>Akai</h1>
         <div id="buttonArea">
           <Button variant="contained" size="small" onClick={this.setCurrentTabs}>
-            <Save style={{ marginRight: '8px' }} />
+            <SaveIcon style={{ marginRight: '8px' }} />
             保存
           </Button>
         </div>
         <div id="currentTabs" className="current tabs">
           <h2>当前 tabs</h2>
           {
-            !currentTabs.length ? null : currentTabs.map(renderLinkItem)
+            !currentTabs.length ? null : currentTabs.map(renderImmutableLinkItem)
           }
         </div>
         <div id="savedTabs" className="saved tabs">
           <h2>保存的 tabs</h2>
           {
             !savedTabs.length ? null : savedTabs.map((elements) => {
+              if (!elements.length) return
               const time = elements[0].time
               return (
-                <div className="linkContainer" key={time}>
+                <div className="links-container" key={time}>
                   <h3>{dayjs.unix(time).format('YYYY-MM-DD HH:mm:ss')}</h3>
                   {
-                    !elements.length ? null : elements.map((renderLinkItem))
+                    !elements.length ? null : elements.map((this.renderLinkItem))
                   }
                 </div>
               )
