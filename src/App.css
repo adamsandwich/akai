@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 1rem;
   color: #666;
-  transition: .3s ease-out;
+  transition: 0.3s ease-out;
 }
 
 a {
@@ -27,28 +27,22 @@ a:hover {
 a:active {
   text-decoration: none;
 }
-
 .link {
   background-color: #fff;
   line-height: 1.5rem;
   cursor: pointer;
-  box-shadow: 1px 1px 0px 0px rgba(94, 93, 102, 0.08),
-    2px 2px 3px 0px rgba(94, 93, 102, 0.1);
   margin: 0.4rem 0;
-  border-radius: 3px;
-  padding: 0.1rem 0.3rem;
-  transition: 0.3s all;
+  padding: 0.3rem;
   display: flex;
   justify-content: stretch;
   align-items: center;
 }
-.link {
-}
 .link:hover {
-  box-shadow: 0 14px 20px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 6px 2px rgba(0, 0, 0, 0.16),
+    0px 1px 2px 2px rgba(0, 0, 0, 0.1), 0px 2px 2px 2px rgba(0, 0, 0, 0.08);
   transform: translateY(-1px);
+  transition: 0.3s all;
 }
-
 .link a {
   text-decoration: none;
 }
@@ -56,6 +50,17 @@ a:active {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  display: inline-block;
+  position: relative;
+  width: calc(100% - 2.85rem);
+}
+.link-delete {
+  color: #b6b6b6;
+  animation-play-state: paused;
+}
+.link-delete:hover {
+  color: rgb(220, 0, 78);
+  animation-play-state: running;
 }
 .favIcon {
   display: inline-block;
@@ -64,4 +69,10 @@ a:active {
   height: 1rem;
   margin-right: 0.4rem;
   background-size: 1rem 1rem;
+}
+.currentTabs {
+  position: relative;
+}
+.savedTabs {
+  position: relative;
 }
