@@ -11,7 +11,7 @@ const renderImmutableLinkItem = element => {
   return (
     <Paper className="link" key={element.url}>
       <span className="favIcon" style={{ backgroundImage: `url(${element.favIconUrl})` }}></span>
-      <span className="link-href" href={element.url}>{element.title}</span>
+      <span className="link-href">{element.title}</span>
     </Paper>
   )
 }
@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <Paper className="link" key={element.url}>
         <span className="favIcon" style={{ backgroundImage: `url(${element.favIconUrl})` }}></span>
-        <a className="link-href" href={element.url} onClick={() => createTab(element)}>{element.title}</a>
+        <a className="link-href" onClick={() => createTab(element)}>{element.title}</a>
         <DeleteIcon className="link-delete wobble fast infinite animated" onClick={() => this.removeTab(element.url)}></DeleteIcon>
       </Paper>
     )
