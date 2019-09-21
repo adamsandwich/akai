@@ -8,7 +8,12 @@ body {
   color: #666;
   transition: 0.3s ease-out;
 }
-
+.title {
+  margin: 0.4rem 0;
+}
+.subtitle2 {
+  margin: 0.2rem 0 !important;
+}
 a {
   margin-right: 10px;
   text-decoration: none;
