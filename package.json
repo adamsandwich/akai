@@ -15,7 +15,7 @@
     "@material-ui/icons": "^4.9.1",
     "animate.css": "^3.7.2",
     "dayjs": "^1.8.23",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
